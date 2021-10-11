@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - IdentityWithCookies</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Identity</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Index" asp-controller="Member">Üye Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-info" asp-action="Index" asp-controller="Admin">Admin ana sayfa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-info" asp-action="Editor" asp-controller="Member">Editor ana sayfa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="btn btn-info" asp-action="Manager" asp-controller="Member">Manager ana sayfa</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+            <div class="col-md-4">
+                <h3> Menü</h3>
+                <a class="btn btn-danger btn-block" asp-action="AnkaraPage" asp-controller="Member">Ankara sayfa</a>
+
+                <a class="btn btn-danger btn-block" asp-action="ViolencePage" asp-controller="Member">Şiddet içeren sayfa</a>
+                <a class="btn btn-danger btn-block" asp-action="ExchangeRedirect" asp-controller="Member">Borsa bilgileri</a>
+
+                <a class="btn btn-info btn-block" asp-action="PasswordChange" asp-controller="Member">Şifre değiştirme</a>
+
+                <a class="btn btn-info btn-block" asp-action="UserEdit" asp-controller="Member">Bilgi güncelleme</a>
+
+                <a class="btn btn-info btn-block" asp-action="Logout" asp-controller="Member" asp-route-returnUrl="/Home/Index">Çıkış yap</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - IdentityWithCookies - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

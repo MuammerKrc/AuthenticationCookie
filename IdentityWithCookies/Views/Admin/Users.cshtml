@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IQueryable<User>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Kullanıcılar</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Any())
+                {
+                    <table class="table table-active table-bordered">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>Role Atama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.UserName</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.City</td>
+                                    <td><a class="btn btn-success" href="~/Admin/RoleAssign?Id=@item.Id">Edit</a></td>
+                                    @*<td colspan="2" class="text-danger">Bilgiler Girilmemiştir</td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info" role="alert">
+                        There is not user
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
